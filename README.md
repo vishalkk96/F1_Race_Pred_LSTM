@@ -42,7 +42,7 @@ It was implemented in PyTorch and executed on a Google Colab environment equippe
 
 ## RESULTS
 
-Graphs are generated in the Jupyter Notebook. The ANN model is able to capture a general trend but misses out on minor nuances which are not captured by the publicly available data
+Graphs are generated in the Jupyter Notebook. The ANN model is able to capture a general trend but misses out on minor nuances which are not captured by the publicly available data. The following results are for the 2024 United States Grand Prix held in Austin, TX. 
 
 ### Stage 1
 
