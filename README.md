@@ -29,15 +29,16 @@ Dividing the problem allows each LSTM network to specialize in a specific task. 
 
 ![](Images/Stage_LSTM.png)
 
-## LSTM Architecture Decisions (Stage 1 and Stage 2)
-
-![](Images/LSTM_Architecture.png)
-
-The best performing architecture is 32 units wide and 3 layers deep
 
 ## MODEL TRAINING
 
-The best-performing LSTM architecture tested has 32 units per layer and is 3 layers deep. It was implemented in PyTorch and executed on a Google Colab environment equipped with an A100 GPU.
+### LSTM Architecture Decisions (Stage 1 and Stage 2)
+
+The best-performing LSTM architecture tested has 32 units per layer and is 3 layers deep.
+
+![](Images/LSTM_Architecture.png)
+
+It was implemented in PyTorch and executed on a Google Colab environment equipped with an A100 GPU.
 
 ## RESULTS
 
