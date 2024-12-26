@@ -240,7 +240,8 @@ def process_laps(path, model, df, qual, nlaps):
     res = res.rename(columns={'Sec2': 'Sec2_P'})
     res = res.rename(columns={'Sec3': 'Sec3_P'})
 
-    # 4. Return the modified DataFrame
+    res['Err_Lap_Spd'] = ((res['Calc_Spd'] - res['Real_Spd']) / res['Real_Spd']) * 100
+
     return res
 
 def preprocess_pos_model(tab, race, qual, drql, drvr):
@@ -459,7 +460,9 @@ def driver_laps(path, model, nf, nlaps):
                'Drv_Sec1_P', 'Drv_Sec2_P', 'Drv_Sec3_P', 'Laptime_P', 'Racetime_P', 'Position_P', 'Drv_Calc_Spd'
                ]]
 
-    
+    res['Err_Drv_Spd'] = ((res['Drv_Calc_Spd'] - res['Drv_Real_Spd']) / res['Drv_Real_Spd']) * 100
+    res['Err_Position'] = res['Position_P'] - res['Position_T']
+
     return res
 
 def rank_drivers(df):
