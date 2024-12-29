@@ -38,8 +38,14 @@ Dividing the problem allows each LSTM network to specialize in a specific task. 
 
 ![](Images/Stage_LSTM.png)
 
+![](Images/Model_Inference.png)
+
 
 ## Model Training
+
+### Training/Validation Split
+
+The model has been trained on race data from 2019 upto the end of Apr 2024 excluding 2022 (2022 Race data was corrupted in the FastF1 library during my data extraction attempts). The validation data comprises of 19 races from May 2024 onwards.
 
 ### LSTM Architecture (Stage 1 and Stage 2)
 
@@ -48,6 +54,11 @@ The best-performing LSTM architecture tested has 32 units per layer and is 3 lay
 ![](Images/LSTM_Architecture.png)
 
 It was implemented in PyTorch and executed on a Google Colab environment equipped with an A100 GPU.
+
+## Race Simulation
+
+Driver lap speeds are collected for the first n laps (default 20) and then projected using stagewise LSTM models until the race ends. Future pitstop decisions and driver DNFs are incorporated, and can be adjusted to explore alternative scenarios. However, to compare the model’s outputs with actual race performance, the original conditions are retained.  
+
 
 ## Results
 
