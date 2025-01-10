@@ -6,13 +6,33 @@ This project aims to develop a predictive model for race outcomes using publicly
 
 ## Problem Statement
 
-Develop a model to estimate a driver's lap time during a race based on tire changes and available data. The model's predicted lap times will be compared to actual performance, with differences visualized graphically to assess accuracy.
+Develop a model to get the individual driver lap data for the first 20 laps and predict the performance of each driver until the end of the race 
 
-## Solution Overview
+## F1 Background
 
 F1 Race Terminology
 
 ![](Images/Race_Terminology.png)
+
+## Quick Baseline
+
+A quick vector (All 3 sector speeds) autoregression model is built to define a performance baseline for any model development
+
+**Error Metric (M.A.P.E)**
+
+![](Images/Var_Errors.png)
+
+**Key Takeaways**
+
+1) The error % increases steadily and linearly with the num of laps
+
+2) Outlaps show a greater error % indicating the significance of auxiliary lap information for predicting driver performance
+
+3) Auxiliary information about the tire, track, lap, driver points, pitstops (outlaps and inlaps) is necessary for the model
+
+4) A non linear model is required to model the lapwise performance
+
+## Solution Overview
 
 The model employs a two-stage approach to predict race outcomes:
 
