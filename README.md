@@ -1,12 +1,12 @@
 # F1 Race Predictor LSTM
-An LSTM Model to predict the speeds and outcomes of a Formula 1 Race
+A 2 stage LSTM Model to predict the driver speeds and final outcome of a Formula 1 Race.
 
 ## Introduction
 This project aims to develop a predictive model for race outcomes using publicly available data from the FastF1 library. While critical data like tire temperature is proprietary to F1 teams and unavailable, the model leverages accessible data such as tire type, tire life, and sector durations for each session (including qualifying and race). These data points form the basis for effectively estimating driver performance despite data limitations.
 
 ## Problem Statement
 
-Develop a model to get the individual driver lap data for the first 20 laps and predict the performance of each driver until the end of the race 
+Develop a model to get the individual driver lap data for the first 20 laps and predict the performance of each driver until the end of the race. 
 
 ## F1 Background
 
@@ -16,21 +16,23 @@ F1 Race Terminology
 
 ## Quick Baseline
 
-A quick vector (All 3 sector speeds) autoregression model is built to define a performance baseline for any model development
+A quick vector (All 3 sector speeds) autoregression model is built to define a performance baseline for any model development. The time series variable is the ratio between the race lap sector speed and qualifying lap sector speed. Stationarity is ensured by using the first difference of the variables.
 
 **Error Metric (M.A.P.E)**
 
 ![](Images/Var_Errors.png)
 
+The above result is for the 2024 United States Grand Prix held in Austin, TX.
+
 **Key Takeaways**
 
-1) The error % increases steadily and linearly with the num of laps
+1) The error % increases steadily by compounding with the num of laps. This is because future laps are predicted based on past laps which themselves are predictions.
 
-2) Outlaps show a greater error % indicating the significance of auxiliary lap information for predicting driver performance
+2) Outlaps show a greater error % indicating the significance of auxiliary lap information for predicting driver performance.
 
-3) Auxiliary information about the tire, track, lap, driver points, pitstops (outlaps and inlaps) is necessary for the model
+3) Auxiliary information about the tire, track, lap, driver points, pitstops (outlaps and inlaps) is necessary for the model.
 
-4) A non linear model is required to model the lapwise performance
+4) A non linear model is required to model the lapwise performance.
 
 ## Solution Overview
 
@@ -88,7 +90,7 @@ Graphs are generated in the Jupyter Notebook. The ANN model is able to capture a
 
 **Business Metric (Mean Lap Speed)**
 
-The predicted mean lap speed superimposed on the actual mean lap speed
+The predicted mean lap speed superimposed on the actual mean lap speed.
 
 ![](Images/Stage1_Results.png)
 
@@ -100,11 +102,11 @@ The predicted mean lap speed superimposed on the actual mean lap speed
 
 **Business Metric (Driver Lap Speed)**
 
-The actual driver lap speeds 
+The actual driver lap speeds.
 
 ![](Images/Stage2_Spd_Real.png)
 
-The predicted driver lap speeds
+The predicted driver lap speeds.
 
 ![](Images/Stage2_Spd_Pred.png)
 
@@ -114,11 +116,11 @@ The predicted driver lap speeds
 
 **Business Metric (Driver Relative Position)**
 
-The actual driver lap positions (Z-Score) 
+The actual driver lap positions (Z-Score).
 
 ![](Images/Stage2_Pos_Real.png)
 
-The predicted driver lap positions (Z-Score)
+The predicted driver lap positions (Z-Score).
 
 ![](Images/Stage2_Pos_Pred.png)
 
@@ -128,11 +130,11 @@ The predicted driver lap positions (Z-Score)
 
 ### Race Standings
 
-The predicted v/s actual driver race finishing positions
+The predicted v/s actual driver race finishing positions.
 
 ![](Images/Race_Results.png)
 
-Pearson correlation co-efficient (Pred finish v/s Actual finish)
+Pearson correlation co-efficient (Pred finish v/s Actual finish).
 
 ![](Images/Standings_Corr.png)
 
