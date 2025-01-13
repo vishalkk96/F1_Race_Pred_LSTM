@@ -40,20 +40,20 @@ This project aims to develop a predictive model for race outcomes using publicly
 1) Download Python 3.11 (https://www.python.org/downloads/release/python-3110/)
 
 2) Clone the github repo
-	'''markdown
+'''bash
 	git clone https://github.com/vishalkk96/F1_Race_Pred_LSTM.git
 	cd <repo-location>
-	''''
+'''
 
 3) Create a new virtual environment (Optional)
-	'''markdown
+'''python
 	python -m venv venv
-	''''
+'''
 
 4) Install the libraries in the requirements file
-	'''markdown
+'''python
 	pip install -r requirements.txt
-	''''
+'''
 
 ## Problem Statement
 
