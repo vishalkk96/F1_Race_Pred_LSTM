@@ -1,8 +1,53 @@
 # F1 Race Predictor LSTM
 A 2 stage LSTM Model to predict the driver speeds and final outcome of a Formula 1 Race.
 
+## Table of Contents
+- [Introduction](#introduction)
+- [Installation Instructions](#installation-instructions)
+- [Problem Statement](#problem-statement)
+- [F1 Background](#f1-background)
+- [Quick Baseline Model](#quick-baseline-model)
+  - [Baseline Model Error Metric (M.A.P.E)](#baseline-model-error-metric-mape)
+  - [Baseline Model Key Takeaways](#baseline-model-key-takeaways)
+- [Solution Overview](#solution-overview)
+  - [Stage 1: Average Lap Speed](#stage-1-average-lap-speed)
+  - [Stage 2: Driver Lap Speed](#stage-2-driver-lap-speed)
+  - [Why the Two-Stage Approach](#why-the-two-stage-approach)
+- [Metrics Definition](#metrics-definition)
+- [Mathematical Formulation](#mathematical-formulation)
+- [Model Training](#model-training)
+  - [Training/Validation Split](#trainingvalidation-split)
+  - [LSTM Architecture (Stage 1 and Stage 2)](#lstm-architecture-stage-1-and-stage-2)
+- [Race Simulation](#race-simulation)
+- [Results](#results)
+  - [Stage 1](#stage-1)
+    - [Business Metric (Mean Lap Speed)](#business-metric-mean-lap-speed)
+    - [Error Metric (M.A.P.E)](#error-metric-mape)
+  - [Stage 2](#stage-2)
+    - [Business Metric (Driver Lap Speed)](#business-metric-driver-lap-speed)
+    - [Error Metric (M.A.P.E)](#error-metric-mape-1)
+    - [Business Metric (Driver Relative Position)](#business-metric-driver-relative-position)
+    - [Error Metric (M.A.E)](#error-metric-mae)
+  - [Race Standings](#race-standings)
+- [Future Improvements](#future-improvements)
+
+
 ## Introduction
 This project aims to develop a predictive model for race outcomes using publicly available data from the FastF1 library. While critical data like tire temperature is proprietary to F1 teams and unavailable, the model leverages accessible data such as tire type, tire life, and sector durations for each session (including qualifying and race). These data points form the basis for effectively estimating driver performance despite data limitations.
+
+## Installation Instructions
+
+1) Download Python 3.11 (https://www.python.org/downloads/release/python-3110/)
+
+2) Clone the github repo
+	git clone https://github.com/vishalkk96/F1_Race_Pred_LSTM.git
+	cd <repo-location>
+
+3) Create a new virtual environment (Optional)
+	python -m venv venv
+
+4) Install the libraries in the requirements file
+	pip install -r requirements.txt
 
 ## Problem Statement
 
@@ -14,17 +59,17 @@ F1 Race Terminology
 
 ![](Images/Race_Terminology.png)
 
-## Quick Baseline
+## Quick Baseline Model
 
 A quick vector (All 3 sector speeds) autoregression model is built to define a performance baseline for any model development. The time series variable is the ratio between the race lap sector speed and qualifying lap sector speed. Stationarity is ensured by using the first difference of the variables.
 
-**Error Metric (M.A.P.E)**
+**Baseline Model Error Metric (M.A.P.E)**
 
 ![](Images/Var_Errors.png)
 
 The above result is for the 2024 United States Grand Prix held in Austin, TX.
 
-**Key Takeaways**
+**Baseline Model Key Takeaways**
 
 1) The error % increases steadily by compounding with the num of laps. This is because future laps are predicted based on past laps which themselves are predictions.
 
