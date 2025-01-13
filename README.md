@@ -41,7 +41,7 @@ This project aims to develop a predictive model for race outcomes using publicly
 
 2) Clone the github repo
 
-'''bash
+'''
 	
 	git clone https://github.com/vishalkk96/F1_Race_Pred_LSTM.git
 	
@@ -50,7 +50,7 @@ This project aims to develop a predictive model for race outcomes using publicly
 
 3) Create a new virtual environment (Optional)
 
-'''python
+'''
 	
 	python -m venv venv
 
@@ -58,7 +58,7 @@ This project aims to develop a predictive model for race outcomes using publicly
 
 4) Install the libraries in the requirements file
 
-'''python
+'''
 	
 	pip install -r requirements.txt
 
