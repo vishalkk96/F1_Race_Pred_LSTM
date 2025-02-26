@@ -35,36 +35,49 @@ A 2 stage LSTM Model to predict the driver speeds and final outcome of a Formula
 ## Introduction
 This project aims to develop a predictive model for race outcomes using publicly available data from the FastF1 library. While critical data like tire temperature is proprietary to F1 teams and unavailable, the model leverages accessible data such as tire type, tire life, and sector durations for each session (including qualifying and race). These data points form the basis for effectively estimating driver performance despite data limitations.
 
-## Installation Instructions
+### Prerequisites
+- Python 3.11 (required) - [Download Python 3.11.0](https://www.python.org/downloads/release/python-3110/)
+- Git
 
-1) Download Python 3.11 (https://www.python.org/downloads/release/python-3110/)
+### Steps
 
-2) Clone the github repo
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/vishalkk96/F1_Race_Pred_LSTM.git
+   cd F1_Race_Pred_LSTM
+   ```
 
-''' 
+2. **Create a virtual environment (recommended)**
+   ```bash
+   # On Windows
+   python -m venv venv
+   venv\Scripts\activate
 
-	git clone https://github.com/vishalkk96/F1_Race_Pred_LSTM.git 	
-	cd <repo-location>	
+   # On macOS/Linux
+   python -m venv venv
+   source venv/bin/activate
+   ```
 
-'''
+3. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-3) Create a new virtual environment (Optional)
+## Running the Application
 
-'''
+### Jupyter Notebook
+To run the original notebook analysis:
+```bash
+jupyter notebook F1_Lap_Sim.ipynb
+```
 
-	python -m venv venv
+### Streamlit App
+To run the interactive Streamlit application:
+```bash
+streamlit run streamlit-app.py
+```
 
-'''
-
-
-4) Install the libraries in the requirements file
-	
-'''
-
-	pip install -r requirements.txt
-
-'''
-
+This will open a browser window with the interactive F1 Race Predictor. If it doesn't automatically open, you can access it at http://localhost:8501.
 
 ## Problem Statement
 
